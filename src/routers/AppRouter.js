@@ -32,7 +32,7 @@ export const AppRouter = () => {
             setCheking(false);
         })
 
-    },[dispatch, setCheking])
+    },[dispatch, setCheking, setIsLoggedIn])
 
     if (cheking){
         return (

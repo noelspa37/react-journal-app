@@ -45,7 +45,7 @@ export const startGoogleLogin = () => {
             )
         });
     }
-}
+};
 
 export const login = (uid, displayName) => {
     return {
@@ -55,4 +55,17 @@ export const login = (uid, displayName) => {
             displayName
         }
     }
-}
+};
+
+export const startLogout = () => {
+    return async (dispatch) => {
+        await firebase.auth().signOut();
+        dispatch( logout() );
+    }
+};
+
+export const logout = () => { 
+    return {
+        type: types.logout
+    }
+};
