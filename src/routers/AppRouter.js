@@ -23,7 +23,7 @@ export const AppRouter = () => {
     useEffect(() => {
         
         firebase.auth().onAuthStateChanged((user) => {
-            if(user?.id) {
+            if(user?.uid) {
                 dispatch( login( user.uid, user.displayName));
                 setIsLoggedIn(true)
             }else {
