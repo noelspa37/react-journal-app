@@ -11,8 +11,6 @@ export const RegisterScreen = () => {
     const dispatch = useDispatch();
     const { msgError } = useSelector( state => state.ui );
 
-    console.log(msgError);
-
     const [formValues, handleInputChange] = useForm({
         name: 'Fernando',
         email: 'nando@gmail.com',
