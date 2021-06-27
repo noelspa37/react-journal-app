@@ -1,4 +1,5 @@
 import { db } from "../firebase/firestore-config";
+import { types } from "../types/types";
 
 
 export const startNewNote = () => {
@@ -14,6 +15,16 @@ export const startNewNote = () => {
 
         const docRef = await db.collection(`${uid}/journal/notes`).add( newNote);
 
-        console.log(docRef);
+        dispatch( activeNote(docRef.id, newNote) )
+    }
+}
+
+export const activeNote = (id, note) => {
+    return {
+        type: types.notesActive,
+        payload: {
+            id,
+            ...note
+        }
     }
 }
