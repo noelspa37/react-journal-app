@@ -4,11 +4,12 @@ import {firebase} from '../firebase/firestore-config';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
     Redirect
   } from 'react-router-dom';
 
 import { AuthRouter } from './AuthRouter';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 import { JournalScreen } from '../components/journal/JournalScreen';
 import { login } from '../actions/auth';
 
@@ -44,13 +45,15 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route 
+                    <PublicRoute 
                         path="/auth"
                         component={ AuthRouter }
+                        isAuthenticated={ isLoggedIn }
                     />
 
-                    <Route 
+                    <PrivateRoute 
                         exact
+                        isAuthenticated={ isLoggedIn }
                         path="/"
                         component={ JournalScreen }
                     />
